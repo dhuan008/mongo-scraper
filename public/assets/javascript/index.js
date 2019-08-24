@@ -67,4 +67,27 @@ $(document).ready(() => {
         articleContainer.append(emptyAlert);
     }
 
+    const handleArticleSave = () => {
+        const articleSave = $(this).parents('.panel').data();
+        articleToSave.saved = true;
+
+        $.ajax({
+            method: 'PATCH',
+            url: '/api/headlines',
+            data: articleToSave
+        }).then(data => {
+            if (data.ok) {
+                initPage();
+            }
+        });
+    }
+
+    const handleArticleScrape = () => {
+        $.get('/api/fetch')
+        .then(data => {
+            initPage();
+            bootbox.alert("<h3 class='text-center m-top-80'>" + data.message + "<h3");
+        });
+    }
+
 });
