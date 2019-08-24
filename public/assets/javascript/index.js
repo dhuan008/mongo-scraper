@@ -1,9 +1,5 @@
 $(document).ready(() => {
     const articleContainer = $('.article-container');
-    $(document).on('click', '.btn.save', handleArticleSave);
-    $(document).on('click', '.scrape-new', handleArticleScrape);
-
-    initPage();
 
     const initPage = () => {
         articleContainer.empty();
@@ -68,7 +64,7 @@ $(document).ready(() => {
     }
 
     const handleArticleSave = () => {
-        const articleSave = $(this).parents('.panel').data();
+        const articleToSave = $(this).parents('.panel').data();
         articleToSave.saved = true;
 
         $.ajax({
@@ -90,4 +86,8 @@ $(document).ready(() => {
         });
     }
 
+    $(document).on('click', '.btn.save', handleArticleSave);
+    $(document).on('click', '.scrape-new', handleArticleScrape);
+
+    initPage();
 });

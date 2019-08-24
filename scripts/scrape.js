@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const scrape = cb => {
-    axios.get('http://www.nytimes.com').then((error, response, body) => {
+    axios.get('http://www.nytimes.com', (error, response, body) => {
 
         const $ = cheerio.load(body);
 

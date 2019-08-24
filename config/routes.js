@@ -30,7 +30,7 @@ module.exports = app => {
     });
 
     app.get('/api/headlines', (req, res) => {
-        const query = {};
+        let query = {};
         if (req.query.saved) {
             query = req.query;
         }
@@ -41,7 +41,7 @@ module.exports = app => {
     });
 
     app.delete('/api/headlines/:id', (req, res) => {
-        const query = {};
+        let query = {};
         query._id = req.params.id;
         headlinesController.delete(query, (err, data) => {
             res.json(data);
@@ -55,7 +55,7 @@ module.exports = app => {
     });
 
     app.get('/api/notes/:headline_id?', (req, res) => {
-        const query = {};
+        let query = {};
         if (req.params.headline_id) {
             query._id = req.params.headline_id;
         }
@@ -66,7 +66,7 @@ module.exports = app => {
     });
 
     app.delete('/api/notes/:id', (req, res) => {
-        const query = {};
+        let query = {};
         query._id = req.params.id;
         notesController.delete(query, (err, data) => {
             res.json(data);
