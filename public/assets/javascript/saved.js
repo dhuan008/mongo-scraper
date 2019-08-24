@@ -143,4 +143,31 @@ $(document).ready(() => {
         });
     }
 
+    const handleNoteSave = () => {
+        let noteData;
+
+        let newNote = $('.bootbox-body textarea').val().trim();
+
+        if(newNote) {
+            noteData = {
+                _id: $(this).data('article')._id,
+                noteText: newNote
+            };
+            $.post('/api/notes', noteData).then(() => {
+                bootbox.hideAll();
+            });
+        }
+    }
+
+    const handleNoteDelete = () => {
+        const noteToDelete = $(this).data("_id");
+
+        $.ajax({
+            url: '/api/notes/' + noteToDelete,
+            method: 'DELETE'
+        }).then(() => {
+            bootbox.hidaAll();
+        });
+    }
+
 });
