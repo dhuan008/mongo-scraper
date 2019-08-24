@@ -72,4 +72,10 @@ module.exports = app => {
             res.json(data);
         });
     });
+
+    app.post('/api/notes', (req, res) => {
+        notesController.save(req.body, data => {
+            res.json(data);
+        });
+    });
 }
