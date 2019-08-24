@@ -9,7 +9,7 @@ const headlineSchema = new Schema({
         unique: true
     },
     summary: {
-        typr: String,
+        type: String,
         required: true
     },
     date: String,

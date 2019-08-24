@@ -60,7 +60,7 @@ module.exports = app => {
             query._id = req.params.headline_id;
         }
 
-        notesController.get(query, (err, data) {
+        notesController.get(query, (err, data) => {
             res.json(data);
         });
     });
